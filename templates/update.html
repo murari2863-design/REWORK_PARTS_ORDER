@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Rework Status</title>
+</head>
+<body>
+    <h2>Update Request #{{ request_data.RequestID }}</h2>
+    <form method="POST">
+        <p>Part: {{ request_data.PartName }}</p>
+        <p>Current Owner: {{ request_data.CurrentOwner }}</p>
+        <p>Status: {{ request_data.Status }}</p>
+
+        <label>New Status:</label>
+        <select name="status" required>
+            <option value="BuildRequested">BuildRequested (Logistics ➜ Body)</option>
+            <option value="BuildDone">BuildDone (Body ➜ Paint)</option>
+            <option value="ReadyForPickup">ReadyForPickup (Paint ➜ Logistics)</option>
+            <option value="Delivered">Delivered (Logistics ➜ Lead)</option>
+            <option value="Closed">Closed (Lead)</option>
+        </select><br><br>
+
+        <label>New Owner:</label>
+        <select name="owner" required>
+            <option value="Logistics">Logistics</option>
+            <option value="Body">Body</option>
+            <option value="Paint">Paint</option>
+            <option value="Lead">Lead</option>
+            <option value="System">System</option>
+        </select><br><br>
+
+        {% if request_data.CurrentOwner == "Paint" %}
+        <label>Is part already in stock?</label><br>
+        <input type="radio" name="part_in_stock" value="yes"> Yes
+        <input type="radio" name="part_in_stock" value="no"> No<br><br>
+        {% endif %}
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
