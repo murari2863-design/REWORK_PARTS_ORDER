@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>Rework Requests</title></head>
+<body>
+<h1>Rework Requests</h1>
+<a href="{{ url_for('create_request') }}">New Request</a>
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>ID</th><th>Van ID</th><th>Part</th><th>Requested By</th><th>State</th><th>Paint Stock</th><th>Paint Approval</th><th>Logistics Status</th><th>Actions</th>
+  </tr>
+  {% for r in requests %}
+  <tr>
+    <td>{{ r.id }}</td>
+    <td>{{ r.van_id }}</td>
+    <td>{{ r.part_name }}</td>
+    <td>{{ r.requested_by }}</td>
+    <td>{{ r.state }}</td>
+    <td>{{ r.paint_stock }}</td>
+    <td>{{ r.paint_approval }}</td>
+    <td>{{ r.logistics_status }}</td>
+    <td>
+      <a href="{{ url_for('paint_update', request_id=r.id) }}">Paint Update</a> |
+      <a href="{{ url_for('logistics_update', request_id=r.id) }}">Logistics Update</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
