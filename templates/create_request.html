@@ -2,13 +2,14 @@
 <html>
 <head><title>Create Rework Request</title></head>
 <body>
-<h1>Create Rework Request</h1>
-<form method="POST">
-  Van ID: <input name="van_id" required><br>
-  Part Name: <input name="part_name" required><br>
-  Requested By (Lead Name): <input name="requested_by" required><br>
-  <button type="submit">Create Request</button>
-</form>
-<a href="{{ url_for('list_requests') }}">Back to Requests</a>
+  <img src="reworks.png" alt="Reworks Image" />
+  <h1>Create Rework Request</h1>
+  <form method="POST">
+    Van ID: <input name="van_id" required><br>
+    Part Name: <input name="part_name" required><br>
+    Requested By (Lead Name): <input name="requested_by" required><br>
+    <button type="submit">Create Request</button>
+  </form>
+  <a href="{{ url_for('list_requests') }}">Back to Requests</a>
 </body>
 </html>
