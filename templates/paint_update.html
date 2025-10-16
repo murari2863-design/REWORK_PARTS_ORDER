@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Paint Update for Request {{ req.id }}</title></head>
+<body>
+<h1>Paint Update for Request {{ req.id }}</h1>
+<form method="POST">
+  <label>Is part available in Paint stock?</label><br>
+  <select name="paint_stock" required>
+    <option value="Unknown" {% if req.paint_stock == 'Unknown' %}selected{% endif %}>Unknown</option>
+    <option value="Yes" {% if req.paint_stock == 'Yes' %}selected{% endif %}>Yes</option>
+    <option value="No" {% if req.paint_stock == 'No' %}selected{% endif %}>No</option>
+  </select><br><br>
+
+  <label>Paint Approval (if not in stock):</label><br>
+  <select name="paint_approval">
+    <option value="Pending" {% if req.paint_approval == 'Pending' %}selected{% endif %}>Pending</option>
+    <option value="Approved" {% if req.paint_approval == 'Approved' %}selected{% endif %}>Approved</option>
+    <option value="Rejected" {% if req.paint_approval == 'Rejected' %}selected{% endif %}>Rejected</option>
+  </select><br><br>
+
+  <button type="submit">Update</button>
+</form>
+<a href="{{ url_for('list_requests') }}">Back to Requests</a>
+</body>
+</html>
