@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Logistics Update for Request {{ req.id }}</title></head>
+<body>
+<h1>Logistics Update for Request {{ req.id }}</h1>
+<form method="POST">
+  <label>Logistics Status:</label><br>
+  <select name="logistics_status" required>
+    <option value="Pending" {% if req.logistics_status == 'Pending' %}selected{% endif %}>Pending</option>
+    <option value="In Transit" {% if req.logistics_status == 'In Transit' %}selected{% endif %}>In Transit</option>
+    <option value="Delivered" {% if req.logistics_status == 'Delivered' %}selected{% endif %}>Delivered</option>
+  </select><br><br>
+
+  <button type="submit">Update</button>
+</form>
+<a href="{{ url_for('list_requests') }}">Back to Requests</a>
+</body>
+</html>
