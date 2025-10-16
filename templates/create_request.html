@@ -2,7 +2,7 @@
 <html>
 <head><title>Create Rework Request</title></head>
 <body>
-  <img src="reworks.png" alt="Reworks Image" />
+  <img src="{{ url_for('static', filename='reworks.png') }}" alt="Reworks Image" />
   <h1>Create Rework Request</h1>
   <form method="POST">
     Van ID: <input name="van_id" required><br>
@@ -13,3 +13,4 @@
   <a href="{{ url_for('list_requests') }}">Back to Requests</a>
 </body>
 </html>
+
